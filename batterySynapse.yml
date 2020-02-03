@@ -1,0 +1,9 @@
+- name: "infos-battery-synapse"
+  signals:
+    - order: "il te reste batterie"
+    - order: "niveau batterie"
+    - order: "combien batterie"
+  neurons:
+    - shell:
+        cmd: "upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep 'percentage:' | grep -Eo '[0-9]{1,3}%'"
+        say_template: "{{ output }}"
